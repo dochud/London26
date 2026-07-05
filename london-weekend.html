@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>London Weekend — 7–9 August 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f0e0c;
+    --surface: #1a1816;
+    --surface2: #232019;
+    --gold: #c8a84a;
+    --gold-dim: #7a6228;
+    --gold-glow: rgba(200,168,74,0.12);
+    --cream: #f5f0e8;
+    --cream-dim: #a89e8a;
+    --red: #b83c2b;
+    --green: #2d6a4f;
+    --blue: #1d3d6b;
+    --rule: rgba(200,168,74,0.2);
+    --text: #e8e0d0;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    border-bottom: 1px solid var(--rule);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(200,168,74,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-kicker {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .hero-sub span { display: inline-block; }
+  .hero-sub .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold-dim); }
+
+  /* ── NAV PILLS ── */
+  .day-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
+  }
+
+  .day-nav a {
+    text-decoration: none;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(200,168,74,0.2);
+    transition: all 0.2s;
+  }
+
+  .day-nav a:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: var(--gold-glow);
+  }
+
+  /* ── HOTEL BANNER ── */
+  .hotel-banner {
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .hotel-banner .hb-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 0.2rem;
+  }
+
+  .hotel-banner .hb-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--cream);
+  }
+
+  .hotel-banner .hb-ref {
+    font-size: 0.72rem;
+    color: var(--cream-dim);
+    margin-top: 0.1rem;
+  }
+
+  .hotel-banner .hb-divider {
+    width: 1px;
+    height: 2.5rem;
+    background: var(--rule);
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* ── DAY SECTION ── */
+  .day-section {
+    padding: 3rem 0 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .day-section:last-child { border-bottom: none; }
+
+  .day-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .day-badge {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--surface2);
+    -webkit-text-stroke: 1px var(--gold-dim);
+    letter-spacing: -0.03em;
+    flex-shrink: 0;
+  }
+
+  .day-title-wrap {}
+
+  .day-date-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+    font-weight: 500;
+  }
+
+  .day-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 3.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 1.1rem;
+    top: 0.6rem;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .tl-dot {
+    position: absolute;
+    left: -2.4rem;
+    top: 0.35rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--gold-dim);
+  }
+
+  .tl-item.travel .tl-dot {
+    background: var(--surface2);
+    box-shadow: 0 0 0 1px var(--cream-dim);
+  }
+
+  .tl-time {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+
+  .tl-item.travel .tl-time { color: var(--cream-dim); }
+
+  .tl-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+    line-height: 1.3;
+  }
+
+  .tl-item.travel .tl-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--cream-dim);
+    font-style: italic;
+  }
+
+  .tl-venue {
+    font-size: 0.78rem;
+    color: var(--cream-dim);
+    margin-bottom: 0.5rem;
+  }
+
+  .tl-body {
+    font-size: 0.82rem;
+    color: var(--cream-dim);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .tl-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid;
+  }
+
+  .tag-gold { color: var(--gold); border-color: var(--gold-dim); background: var(--gold-glow); }
+  .tag-green { color: #4caf50; border-color: #2d6a4f; background: rgba(45,106,79,0.15); }
+  .tag-blue { color: #5b9bd5; border-color: #1d3d6b; background: rgba(29,61,107,0.2); }
+  .tag-red { color: #e57373; border-color: var(--red); background: rgba(184,60,43,0.15); }
+
+  /* ── EVENT CARD (for shows) ── */
+  .event-card {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--gold);
+    padding: 1.25rem 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .event-card .ec-show {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 0.15rem;
+  }
+
+  .event-card .ec-venue {
+    font-size: 0.78rem;
+    color: var(--cream-dim);
+    margin-bottom: 0.75rem;
+  }
+
+  .event-card .ec-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .ec-field label {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 0.15rem;
+    font-weight: 500;
+  }
+
+  .ec-field span {
+    font-size: 0.82rem;
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  /* ── SUGGESTION CARD ── */
+  .suggestion {
+    background: var(--surface2);
+    border: 1px solid rgba(200,168,74,0.1);
+    padding: 1rem 1.25rem;
+    margin-top: 0.4rem;
+  }
+
+  .suggestion h4 {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.2rem;
+  }
+
+  .suggestion p {
+    font-size: 0.76rem;
+    color: var(--cream-dim);
+    line-height: 1.5;
+  }
+
+  .suggestion-group {
+    margin-top: 0.5rem;
+  }
+
+  .sg-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── TIP BOX ── */
+  .tip-box {
+    background: rgba(200,168,74,0.06);
+    border: 1px solid var(--gold-dim);
+    border-left: 3px solid var(--gold);
+    padding: 0.75rem 1rem;
+    margin-top: 0.6rem;
+    font-size: 0.76rem;
+    color: var(--cream-dim);
+    line-height: 1.5;
+  }
+
+  .tip-box strong { color: var(--gold); font-weight: 500; }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 3rem 1rem;
+    border-top: 1px solid var(--rule);
+    margin-top: 1rem;
+  }
+
+  .footer p {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    .timeline { padding-left: 2.5rem; }
+    .hotel-banner .hb-divider { display: none; }
+    .day-nav { gap: 0.35rem; }
+  }
+
+  @media print {
+    body { background: white; color: #111; }
+    :root { --bg: white; --surface: #f5f5f5; --surface2: #ebebeb; --cream: #111; --cream-dim: #444; --text: #111; --gold: #7a5c00; --gold-dim: #7a5c00; --rule: #ccc; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="hero-kicker">Weekend Itinerary</p>
+  <h1>London,<br><em>August 2026</em></h1>
+  <p class="hero-sub">
+    <span>7–9 August</span>
+    <span class="dot"></span>
+    <span>Oxford · Fleet Street · West End</span>
+    <span class="dot"></span>
+    <span>Two Shows</span>
+  </p>
+</header>
+
+<!-- DAY NAV -->
+<nav class="day-nav">
+  <a href="#fri">Friday 7 Aug</a>
+  <a href="#sat">Saturday 8 Aug</a>
+  <a href="#sun">Sunday 9 Aug</a>
+</nav>
+
+<!-- HOTEL BANNER -->
+<div class="hotel-banner">
+  <div>
+    <div class="hb-label">Accommodation</div>
+    <div class="hb-name">Thistle Bloomsbury Park</div>
+  </div>
+  <div class="hb-divider"></div>
+  <div>
+    <div class="hb-label">Booking Reference</div>
+    <div class="hb-ref" style="font-size:0.9rem;color:var(--cream);font-weight:500;">1067668679</div>
+  </div>
+  <div class="hb-divider"></div>
+  <div>
+    <div class="hb-label">Board</div>
+    <div class="hb-ref" style="font-size:0.9rem;color:var(--cream);font-weight:500;">B&B · 1 Night</div>
+  </div>
+</div>
+
+<main class="container">
+
+  <!-- ══════════ FRIDAY ══════════ -->
+  <section class="day-section" id="fri">
+    <div class="day-header">
+      <div class="day-badge">Fri</div>
+      <div class="day-title-wrap">
+        <div class="day-date-label">7 August 2026</div>
+        <div class="day-title">Shifnal → Oxford</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item travel">
+        <div class="tl-dot"></div>
+        <div class="tl-time">Morning</div>
+        <div class="tl-title">Drive from Shifnal to Lara's — TF11 9QF → OX3 8HX</div>
+        <div class="tl-body">About 2hr via A34. Straightforward run — leave after the morning rush for an easy arrival.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">On arrival</div>
+        <div class="tl-title">Home Jobs</div>
+        <div class="tl-venue">Lara's — OX3 8HX</div>
+        <div class="tl-tags">
+          <span class="tag tag-blue">Cable tidy-up</span>
+          <span class="tag tag-blue">Ethernet install</span>
+          <span class="tag tag-blue">Replacing Virgin Media coax</span>
+        </div>
+      </div>
+
+      <div class="tl-item travel">
+        <div class="tl-dot"></div>
+        <div class="tl-time">Evening</div>
+        <div class="tl-title">Settle in, good meal, early night — big day Saturday</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════ SATURDAY ══════════ -->
+  <section class="day-section" id="sat">
+    <div class="day-header">
+      <div class="day-badge">Sat</div>
+      <div class="day-title-wrap">
+        <div class="day-date-label">8 August 2026</div>
+        <div class="day-title">Oxford Tube → Holy Grail → Avenue Q</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">~10:32</div>
+        <div class="tl-title">Oxford Tube from Thornhill Park &amp; Ride</div>
+        <div class="tl-venue">Stop A, Thornhill P&amp;R, London Road, OX3 8DP — 10 min walk from OX3 8HX</div>
+        <div class="tl-body">Catch the ~10:32 departure for a ~11:45 arrival into London. Runs every 12 minutes — Lara needs to book tickets <strong style="color:var(--cream)">Marble Arch, Park Lane (Stop S)</strong>.</div>
+        <div class="tip-box"><strong>Tip:</strong> Buy return tickets via the Stagecoach app. Journey is ~1hr 15min to Marble Arch.</div>
+      </div>
+
+      <div class="tl-item travel">
+        <div class="tl-dot"></div>
+        <div class="tl-time">~11:45</div>
+        <div class="tl-title">Arrive Marble Arch → Central line to Holborn (10 min) → Drop bags at hotel</div>
+        <div class="tl-body" style="color:var(--cream-dim)">Thistle Bloomsbury Park is a 5 min walk from Holborn tube. Too early to check in, but they'll store luggage no problem.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">~12:15</div>
+        <div class="tl-title">Mystery of the Holy Grail</div>
+        <div class="tl-venue">Starts at Temple Church, Fleet Street area — ends at Fleet Street via Lincoln's Inn Fields</div>
+        <div class="tl-body">Self-guided mystery adventure from mysteryguides.co.uk — a London journalist claims to have solved the search for the Holy Grail, and you're following the clues. Allow around 3 hours including optional stops at two historic taverns along the route. Finishing on Fleet Street around 15:15</div>
+        <div class="tl-tags">
+          <span class="tag tag-gold">~3 hours</span>
+          <span class="tag tag-gold">Temple Church</span>
+          <span class="tag tag-gold">Lincoln's Inn Fields</span>
+          <span class="tag tag-gold">Fleet Street</span>
+        </div>
+        <div class="tip-box"><strong>Optional:</strong> The guide mentions two historic taverns on route — ideal for a mid-hunt pint. Ye Olde Cheshire Cheese on Fleet Street is one of London's most famous old pubs, worth popping into if you haven't before.</div>
+      </div>
+
+      <div class="tl-item travel">
+        <div class="tl-dot"></div>
+        <div class="tl-time">~15:15</div>
+        <div class="tl-title">Finish tour on Fleet Street → wander up to Covent Garden / check in to hotel</div>
+        <div class="tl-body" style="color:var(--cream-dim)">Fleet Street to Holborn is a 15 min walk through the Inns of Court — lovely on a summer afternoon. Check in should be fine by now.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">17:30</div>
+        <div class="tl-title">Dinner — Flat Iron</div>
+        <div class="tl-venue">Flat Iron, Tottenham Court Road</div>
+        <div class="tl-body">Pre-booked. Simple, excellent steak — one cut, salad, done. Perfect pre-theatre fuel without being too heavy.</div>
+        <div class="tl-tags">
+          <span class="tag tag-green">Pre-booked ✓</span>
+        </div>
+      </div>
+
+      <div class="tl-item travel">
+        <div class="tl-dot"></div>
+        <div class="tl-time">~19:00</div>
+        <div class="tl-title">10 min walk from Flat Iron → Shaftesbury Theatre</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">19:30</div>
+        <div class="tl-title">🎭 Avenue Q</div>
+        <div class="event-card">
+          <div class="ec-show">Avenue Q</div>
+          <div class="ec-venue">Shaftesbury Theatre, 210 Shaftesbury Avenue, WC2H 8DP</div>
+          <div class="ec-meta">
+            <div class="ec-field"><label>Section</label><span>Royal Circle</span></div>
+            <div class="ec-field"><label>Seats</label><span>M15 &amp; M16</span></div>
+            <div class="ec-field"><label>Curtain Up</label><span>19:30</span></div>
+            <div class="ec-field"><label>Running Time</label><span>~2hr 15min</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item travel">
+        <div class="tl-dot"></div>
+        <div class="tl-time">~21:45</div>
+        <div class="tl-title">Out of the theatre → post-show drinks in Soho — you're already there</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════ SUNDAY ══════════ -->
+  <section class="day-section" id="sun">
+    <div class="day-header">
+      <div class="day-badge">Sun</div>
+      <div class="day-title-wrap">
+        <div class="day-date-label">9 August 2026</div>
+        <div class="day-title">Explore → The Comedy About Spies → Home</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">Morning</div>
+        <div class="tl-title">Breakfast at the hotel</div>
+        <div class="tl-venue">Thistle Bloomsbury Park — B&amp;B included</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">~10:00</div>
+        <div class="tl-title">Find something for a fun morning! 🎉</div>
+        <div class="tl-venue">Bloomsbury / Covent Garden on your doorstep</div>
+        <div class="tl-body">British Museum is a 5 min walk from the hotel and free. Covent Garden Piazza is 15 mins on foot — world-class street performers on a Sunday in August. Or just wander — you're in a brilliant part of town.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">~13:00</div>
+        <div class="tl-title">Light lunch before the show</div>
+        <div class="tl-venue">Near the Adelphi / Strand area</div>
+        <div class="tl-body">Show's at 16:00 so a relaxed lunch around 1–1:30 works well. A few good options nearby:</div>
+        <div class="suggestion-group">
+          <div style="margin-top:0.6rem;">
+            <div class="sg-label">Suggestions</div>
+            <div class="suggestion">
+              <h4>Gordon's Wine Bar</h4>
+              <p>London's oldest wine bar, tucked into a candlelit cave on Villiers Street — 4 min walk from the Adelphi. Charcuterie, cheese platters, wine by the glass from £6. Brilliant atmosphere.</p>
+            </div>
+            <div class="suggestion" style="margin-top:0.4rem;">
+              <h4>Wahaca Covent Garden</h4>
+              <p>Colourful Mexican street food on Chandos Place — tacos, burritos, margaritas. Light, relaxed, easy on the wallet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item travel">
+        <div class="tl-dot"></div>
+        <div class="tl-time">~15:30</div>
+        <div class="tl-title">Short stroll to the Adelphi Theatre (~10 min from Covent Garden)</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">16:00</div>
+        <div class="tl-title">🕵️ The Comedy About Spies</div>
+        <div class="event-card">
+          <div class="ec-show">The Comedy About Spies</div>
+          <div class="ec-venue">Adelphi Theatre, 409 The Strand, WC2R 0NS</div>
+          <div class="ec-meta">
+            <div class="ec-field"><label>Section</label><span>Upper Circle</span></div>
+            <div class="ec-field"><label>Seats</label><span>F21 &amp; F22</span></div>
+            <div class="ec-field"><label>Curtain Up</label><span>16:00</span></div>
+            <div class="ec-field"><label>Running Time</label><span>~2hr 15min</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item travel">
+        <div class="tl-dot"></div>
+        <div class="tl-time">~18:15</div>
+        <div class="tl-title">Head back to Thistle Bloomsbury Park to collect luggage before travelling home</div>
+        <div class="tl-body" style="color:var(--cream-dim)">Allow ~20–30 mins for that (hotel is a short bus or cab ride from the Adelphi)</div>
+      </div>
+      
+            <div class="tl-item travel">
+        <div class="tl-dot"></div>
+        <div class="tl-time">~19:00</div>
+        <div class="tl-title">Travel Central line to Holborn -> Marble Arch (15 Mins)</div>
+        <div class="tl-body" style="color:var(--cream-dim)">5 min walk to Holborn tube. 10 mins to Marble Arch</div>
+      </div>
+
+      <div class="tl-item travel">
+        <div class="tl-dot"></div>
+        <div class="tl-time">~19:37</div>
+        <div class="tl-title">Oxford Tube from Marble Arch → Thornhill P&amp;R -> arrives 20.43 → 10 min walk home 🎉</div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Have the best weekend ✦ August 2026</p>
+</footer>
+
+</body>
+</html>
